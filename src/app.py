@@ -27,11 +27,11 @@ class Calculator:
         return self.history
 
 
-def fib_sequence(n: int) -> int:
+def calculate_fibonacci(n: int) -> int:
     """Calculate fibonacci number at position n."""
     if n <= 1:
         return n
-    return fib_sequence(n - 1) + fib_sequence(n - 2)
+    return calculate_fibonacci(n - 1) + calculate_fibonacci(n - 2)
 
 
 def process_data(data: list) -> dict:
