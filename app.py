@@ -49,3 +49,10 @@ def process_data(data: list) -> dict:
         "max": max_val,
         "min": min_val
     }
+
+
+def validate_input(value: int) -> bool:
+    """Validate input is a positive integer."""
+    if not isinstance(value, int):
+        return False
+    return value > 0
