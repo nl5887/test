@@ -1,4 +1,5 @@
 import json
+from utils import validate_input, process_data
 
 
 class Calculator:

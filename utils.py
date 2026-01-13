@@ -3,6 +3,8 @@
 import logging
 from typing import List, Dict, Any, Optional
 
+__version__ = "1.0.0"
+__all__ = ["DataProcessor", "ErrorHandler", "transform_data", "validate_config", "merge_configs"]
 logger = logging.getLogger(__name__)
 
 
