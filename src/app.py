@@ -1,6 +1,10 @@
 import json
 from utils import validate_input, process_data
-# TEST MODIFICATION
+import logging
+
+# Configure logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 
 class Calculator:
@@ -8,6 +12,9 @@ class Calculator:
     
     def __init__(self, name: str):
         """Initialize calculator with a name."""
+        if not name or not isinstance(name, str):
+            raise ValueError("Calculator name must be a non-empty string")
+        logger.info(f"Initializing Calculator: {name}")
         self.name = name
         self.history = []
     
@@ -15,16 +22,21 @@ class Calculator:
         """Add two numbers and store in history."""
         result = a + b
         self.history.append(f"add({a}, {b}) = {result}")
+        logger.debug(f"Added: {a} + {b} = {result}")
         return result
     
     def multiply(self, a: int, b: int) -> int:
         """Multiply two numbers."""
         result = a * b
         self.history.append(f"multiply({a}, {b}) = {result}")
+        logger.debug(f"Multiplied: {a} * {b} = {result}")
         return result
     
     def get_history(self):
         """Return operation history."""
+        if not self.history:
+            logger.warning(f"Calculator {self.name}: History is empty")
+        return list(self.history)
         return self.history
 
 
