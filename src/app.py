@@ -1,6 +1,7 @@
 import json
 from utils import validate_input, process_data
 import logging
+from exceptions import ValidationError, CalculationError
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -13,7 +14,7 @@ class Calculator:
     def __init__(self, name: str):
         """Initialize calculator with a name."""
         if not name or not isinstance(name, str):
-            raise ValueError("Calculator name must be a non-empty string")
+            raise ValidationError("Calculator name must be a non-empty string")
         logger.info(f"Initializing Calculator: {name}")
         self.name = name
         self.history = []
@@ -37,7 +38,6 @@ class Calculator:
         if not self.history:
             logger.warning(f"Calculator {self.name}: History is empty")
         return list(self.history)
-        return self.history
 
 
 def calculate_fibonacci(n: int) -> int:
